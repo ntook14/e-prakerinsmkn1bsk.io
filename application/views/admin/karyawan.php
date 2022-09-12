@@ -1,0 +1,86 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-4 text-gray-800"><?= $judul; ?></h1>
+
+    <div class="row">
+
+        <div class="col-lg-12">
+            <?= form_error(
+                'menu',
+                '<div class="alert alert-danger" role="alert">',
+                '</div>'
+            ); ?>
+
+            <?= $this->session->flashdata('message'); ?>
+
+           
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Alamat</th>
+                        <th scope="col">Devisi</th>
+                        <th scope="col">Jabatan</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <!-- $menu ko diambiek dari controller menu.php nan ado di dataku -->
+                <tbody>
+                    <?php $i = 1; ?>
+                    <?php foreach ($users as $u) : ?>
+                        <tr>
+                            <th scope="row"><?= $i; ?></th>
+                            <td><?= $u['name']; ?></td>
+                            <td><?= $u['email']; ?></td>
+                            <td><?= $u['alamat']; ?></td>
+                            <td><?= $u['devisi']; ?></td>
+                            <td><?= $u['jabatan']; ?></td>
+                            <td>
+                                <a href="" class="badge rounded-pill bg-success">Edit</a>
+                                <a href="" class="badge rounded-pill bg-danger">Delete</a>
+                            </td>
+                        </tr>
+                        <?php $i++; ?>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+
+</div>
+<!-- End of Main Content -->
+
+
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="newRoleModal" tabindex="-1" aria-labelledby="newRoleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="newRoleModalLabel">Add New Role</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <form action="<?= base_url('admin/role'); ?>" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="role" name="role" placeholder="Role Name">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
